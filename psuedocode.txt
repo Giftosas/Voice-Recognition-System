@@ -1,0 +1,33 @@
+What did I do?
+- Broke the project into separate parts
+    - Create the Database (Voice recognition)
+    - Create tables (Users and Voice)
+    - Wrote the code to enhance the audio
+    - Wrote code to verify a single user
+    - Wrote code to retrieve data from the database
+
+What remains to do?
+    - Combine everything on streamlit
+
+How the web-app looks like:
+    - Home page (Welcoming people to the site, and about the project and project team)
+    - New User Registration (Collect info from users to train a new voice model)
+    - Collect voice input page (from user, collect voice from user)
+    - Redirect to the extract users page if user exists
+
+
+You have a function that converts streamlit audio to blob
+You have a function that converts uploaded audio to blob
+Add both to db_creation file and call them when you need them.
+
+DELETE TABLE AND START AGAIN FROM SCRATCH
+
+
+errors--
+LocalEntryNotFoundError
+huggingface_hub.errors.LocalEntryNotFoundError:
+LibsndfileError
+AttributeError:
+NameResolutionError(
+MaxRetryError
+ConnectionError
