@@ -56,6 +56,7 @@ else:
     voice_file = st.experimental_audio_input('Record the text displayed above')
     if voice_file:
         voice_file = enhance_audio_to_blob(voice_file.getvalue())
+        st.text("Voice capture complete!!!!")
     else:
         pass
 
