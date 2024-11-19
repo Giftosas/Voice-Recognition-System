@@ -1,0 +1,7 @@
+[theme]
+primaryColor="#1e90ff"                # Bright Dodger Blue for primary elements
+backgroundColor="#0d1b2a"             # Rich dark blue for the main background
+secondaryBackgroundColor="#1b263b"    # Slightly lighter navy blue for panels/sidebars
+textColor="#e0e1dd"                   # Soft white for a modern, less stark contrast
+font="serif"                     # Clean and contemporary sans serif font
+
