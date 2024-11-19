@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
-st.header("Meet the team")
+st.title("Meet the team")
 
 team1_image = open_picture("IMG_5767.jpg")
 team2_image = open_picture("IMG_5767.jpg")
@@ -22,8 +22,8 @@ with col1:
 with col2:
     st.markdown("""
     ### Ogundeko Oluwaseun Emmanuel
-    #### Role:
-    Team Lead, deligation and management 
+    <p><b style="font-size:130%">Role:</b> Team Lead, delegation and management</p>
+    <p><b>About:</b> Oluwaseun is a seasoned AI prompter with strength in firebrick</p>
     <br>Socials:<br>
     <a href="Linkedin">LinkedIn</a><br><a href="IG">Instagram</a>""", unsafe_allow_html=True)
 
