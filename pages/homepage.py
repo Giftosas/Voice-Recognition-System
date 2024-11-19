@@ -10,13 +10,13 @@ st.set_page_config(
 )
 
 
-home_picture = open_picture("voice2.jpg")
+home_picture = open_picture("voice3.jpg")
 st.title("G.L.K Voice verification System")
 st.markdown(f"""
-<img src="data:image/jpeg;base64,{home_picture}" width="100%" height="30%"><br><br>
+<img style="border: 2px solid powderblue" src="data:image/jpeg;base64,{home_picture}" width="100%" height="30%"><br>
 """, unsafe_allow_html=True)
 
-st.text("Required for the fulfillment of the Higher National Diploma (HND)")
+st.text("Required for the fulfillment of the Higher National Diploma (HND) certification")
 
 st.markdown("""
 ## Overview
