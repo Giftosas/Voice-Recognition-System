@@ -17,14 +17,12 @@ recognizer = SpeakerRecognition.from_hparams(
         savedir="pretrained_models/spkrec-ecapa-voxceleb"
     )
 
-
 st.title("Verification Page")
 st.markdown("**Please record the following text displayed below:**")
 
 
 st.success(f"{test_train_sentences()}")
 audio_file = st.experimental_audio_input("Record or upload your audio")
-# audio_file = st.file_uploader("Upload a voice recording (WAV format):", type=["wav"])
 
 if audio_file:
     # Find the best matching user in the database
@@ -37,7 +35,6 @@ if audio_file:
         else:
             with st.spinner("Verifying User"):      # Aesthetics
                 time.sleep(2)
-            st.text(f"Best match found: user_id = {bestUser_id} with score = {bestScore}, predict {predict}")
             rows = show_result(bestUser_id)
             st.header("USER FOUND\n")
             col1, col2 = st.columns(2)
@@ -53,7 +50,7 @@ if audio_file:
 
                 with col1:
                     images = base64.b64encode(row[10]).decode()
-                    st.markdown(f'<img src="data:image/jpeg;base64,{images}" width="80%" height="30%">',
+                    st.markdown(f'<img style="border: 2px solid powderblue" src="data:image/jpeg;base64,{images}" width="80%" height="30%">',
                                 unsafe_allow_html=True)
                     st.html(sex)
                     st.html(occupation)
