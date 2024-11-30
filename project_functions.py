@@ -17,7 +17,7 @@ def create_connection():
     Returns:
         None
     """
-    conn = sqlite3.connect('Voice_Recognition2.db')
+    conn = sqlite3.connect('Voice_Recognition.db')
     return conn
 
 
