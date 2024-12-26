@@ -1,5 +1,5 @@
-from project_functions import (create_tables, enhance_audio_to_blob, insert_voice_embedding,
-                               insert_user, test_train_sentences)
+from funcs import (create_tables, enhance_audio_to_blob, insert_voice_embedding,
+                   insert_user, test_train_sentences)
 from streamlit_js_eval import streamlit_js_eval
 import streamlit as st
 import datetime
