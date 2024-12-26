@@ -1,4 +1,4 @@
-from project_functions import open_picture
+from funcs import open_picture
 import streamlit as st
 
 
