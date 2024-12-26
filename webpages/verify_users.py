@@ -1,4 +1,4 @@
-from project_functions import test_train_sentences, dob_to_age, find_best_matching_user, show_result
+from funcs import test_train_sentences, dob_to_age, find_best_matching_user, show_result
 from speechbrain.inference.speaker import SpeakerRecognition
 import streamlit as st
 import base64
