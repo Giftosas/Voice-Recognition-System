@@ -1,5 +1,5 @@
 import streamlit as st
-from project_functions import open_picture
+from funcs import open_picture
 
 st.set_page_config(
     page_title='The team',
