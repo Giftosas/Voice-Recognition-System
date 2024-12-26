@@ -63,26 +63,28 @@ else:
 
 submitted = st.button("Register User")
 
-if submitted:
-    if all((first_name, other_name, last_name, dob, phone, about, sex, occupation,
-            marital_status, picture_file, voice_file[0])):
-        # Save the uploaded picture as BLOB
-        picture_data = picture_file.read()
+try:
+    if submitted:
+        if all((first_name, other_name, last_name, dob, phone, about, sex, occupation,
+                marital_status, picture_file, voice_file[0])):
+            # Save the uploaded picture as BLOB
+            picture_data = picture_file.read()
 
-        # Insert into user_db
-        user_id = insert_user(first_name, other_name, last_name, dob, phone, about, sex, occupation,
-                              marital_status, picture_data)
+            # Insert into user_db
+            user_id = insert_user(first_name, other_name, last_name, dob, phone, about, sex, occupation,
+                                  marital_status, picture_data)
 
-        # Insert into voice_db
-        insert_voice_embedding(user_id, voice_file)
+            # Insert into voice_db
+            insert_voice_embedding(user_id, voice_file)
 
-        with st.spinner("Registering"):
-            time.sleep(3)
+            with st.spinner("Registering"):
+                time.sleep(3)
 
-        st.success(f"User {first_name} registered successfully!")
+            st.success(f"User {first_name} registered successfully!")
 
-        # Refresh the page after user registers
-        streamlit_js_eval(js_expressions="parent.window.location.reload()")
-    else:
-        st.error("Please fill in all fields and upload both picture and voice.")
-
+            # Refresh the page after user registers
+            streamlit_js_eval(js_expressions="parent.window.location.reload()")
+        else:
+            st.error("Please fill in all fields and upload both picture and voice.")
+except TypeError:
+    st.error("Please fill the form appropriately.")
