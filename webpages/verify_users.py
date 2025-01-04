@@ -4,6 +4,7 @@ import streamlit as st
 import base64
 import time
 
+# Page configuration
 st.set_page_config(
     page_title="Verify users",
     layout='centered',
@@ -28,7 +29,7 @@ if audio_file:
     # Find the best matching user in the database
     bestUser_id, bestScore, predict = find_best_matching_user(audio_file.getvalue(), recognizer)
     if bestUser_id:
-        with st.spinner("Checking User"):       # Aesthetics
+        with st.spinner("Checking Database"):       # Aesthetics
             time.sleep(2)
         if not predict:
             st.error("USER NOT RECOGNISED!!!")
