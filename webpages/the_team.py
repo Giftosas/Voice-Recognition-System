@@ -10,15 +10,11 @@ st.set_page_config(
 
 st.title("Meet the team")
 
-team2_image = open_picture("Gift.jpg")
-team3_image = open_picture("homepage.webp")
-linked = open_picture("linkedin.png")
-
 col1, col2 = st.columns(2)
 # Gift
 with col1:
-    st.markdown(f'<img style="border: 2px solid black" src="data:image/jpeg;base64,{open_picture("Gift.jpg")}" width="80%" height="30%"><br><br>',
-                unsafe_allow_html=True)
+    st.markdown(f"""<img style="border: 2px solid black" src="data:image/jpeg;base64,{open_picture("Gift.jpg")}"
+                width="80%" height="30%"><br><br>""", unsafe_allow_html=True)
 
 with col2:
     st.markdown(f"""
@@ -37,8 +33,8 @@ with col2:
 # Kamsi
 col1a, col2a = st.columns(2)
 with col1a:
-    st.markdown(f'<img style="border: 2px solid powderblue" src="data:image/jpeg;base64,{open_picture("kamsi.jpg")}" width="80%" height="30%"><br><br>',
-                unsafe_allow_html=True)
+    st.markdown(f"""<img style="border: 2px solid powderblue" src="data:image/jpeg;base64,{open_picture("kamsi.jpg")}" 
+                width="80%" height="30%"><br><br>""", unsafe_allow_html=True)
 
 with col2a:
     st.markdown(f"""
@@ -55,11 +51,13 @@ with col2a:
 # Lypha
 col1b, col2b = st.columns(2)
 with col1b:
-    st.markdown(f'<img src="data:image/jpeg;base64,{team3_image}" width="80%" height="30%"><br><br>',
-                unsafe_allow_html=True)
+    st.markdown(f"""<img style="border: 2px solid silver" src="data:image/jpeg;base64,{open_picture("lypha.jpg")}" 
+    width="80%" height="30%"><br><br>""", unsafe_allow_html=True)
 
 with col2b:
-    st.markdown("""
-    ### Ogundeko Oluwaseun Emmanuel
-    ### Role:
-    Team Lead, delegation and management""", unsafe_allow_html=True)
+    st.markdown(f"""
+    ### Okolie Nnaemeka Emmanuel 
+    <p><b style="font-size:100%">RESEARCHER:</b> Incharge of research procedures utilised in this project.</p>
+       
+    <a href="https://x.com/masterford33?s=21">
+    <img src="data:image/jpeg;base64,{open_picture("X.png")}" width="10%" height="10%"></a>""", unsafe_allow_html=True)
