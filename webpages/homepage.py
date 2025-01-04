@@ -9,9 +9,9 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
-st.title("G.L.K Voice verification System")
+st.title("G.L.K Voice verification Portal")
 st.markdown(f"""
-<img style="border: 2px solid powderblue" src="data:image/jpeg;base64,{open_picture("voice3.jpg")}" width="90%"><br>
+<img style="border: 2px solid powderblue" src="data:image/jpeg;base64,{open_picture("voice.jpg")}" width="80%"><br>
 """, unsafe_allow_html=True)
 
 st.text("Required for the fulfillment of the Higher National Diploma (HND) certification")
