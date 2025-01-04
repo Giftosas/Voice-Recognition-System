@@ -11,32 +11,16 @@ import io
 
 # Connect to the database
 def create_connection():
-    """
-    Creates database connection
-
-    Returns:
-        None
-    """
     conn = sqlite3.connect('Voice_Recognition.db')
     return conn
 
 
 # Create tables
 def create_tables():
-    """
-    Creates the two tables needed for this project (Users table and voice_print table)
-
-    User Table: For storing user basic data
-    voice_print table: Referencing the primary key from Users as a foreign key, we ae able to link users voice from
-    the voice table
-
-    Returns:
-        None
-    """
     conn = create_connection()
     cursor = conn.cursor()
 
-    # Create users table add 's' to voice_print(s) and user(s)
+    # Create users table
     cursor.execute('''
             CREATE TABLE IF NOT EXISTS user (
         user_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -68,25 +52,6 @@ def create_tables():
 
 # Insert a new user
 def insert_user(first_name, other_name, last_name, dob, phone, about, sex, occupation, marital_status, picture):
-    """
-        Inserts user details into the database after registration.
-
-        Parameters:
-            first_name (str): User's first name.
-            other_name (str): User's middle name.
-            last_name (str): User's last name.
-            dob (date): User's date of birth.
-            phone (str): User's phone number.
-            about (str): Information about the user.
-            sex (str): User's gender.
-            occupation (str): User's occupation.
-            marital_status (str): User's marital status.
-            picture (bytes): Binary data representing the user's picture.
-
-        Returns:
-            int: The user ID from the database.
-    """
-
     conn = create_connection()
     cursor = conn.cursor()
 
@@ -104,12 +69,6 @@ def insert_user(first_name, other_name, last_name, dob, phone, about, sex, occup
 
 # Insert voice embedding
 def insert_voice_embedding(user_id, voice_embedding):
-    """
-
-    :param user_id:
-    :param voice_embedding:
-    :return: None
-    """
     conn = create_connection()
     cursor = conn.cursor()
 
@@ -123,16 +82,6 @@ def insert_voice_embedding(user_id, voice_embedding):
 
 
 def enhance_audio_to_blob(audio_bytes):
-    """
-        Enhances the uploaded audio file using `speechbrain.inference.SpectralMaskEnhancement`.
-
-        Parameters:
-            audio_bytes (bytes): The uploaded audio file in bytes.
-
-        Returns:
-            bytes: The enhanced audio as a binary blob.
-    """
-
     with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp_file:
         tmp_file.write(audio_bytes)
         tmp_file_path = tmp_file.name
@@ -158,16 +107,6 @@ def enhance_audio_to_blob(audio_bytes):
 
 
 def dob_to_age(date_of_birth):
-    """
-    Calculates the user's age based on their date of birth.
-
-    Parameters:
-        date_of_birth (date): A date object representing the user's date of birth.
-
-    Returns:
-        int: The user's age in years.
-    """
-
     if type(date_of_birth) is str:
         date_of_birth = datetime.datetime.strptime(date_of_birth, "%Y-%m-%d")
         date_of_birth = date_of_birth.date()
@@ -182,19 +121,6 @@ def dob_to_age(date_of_birth):
 
 
 def open_picture(image_name):
-    """
-    Loads an image file (PNG, JPEG, or JPG), converts it to a byte stream, and returns the byte data.
-
-    This function opens an image file, reads its contents as bytes, and returns the binary representation. It is useful
-    for processing or transferring images in binary format.
-
-    Parameters:
-        image_name (str): The name of the image file, including the file extension (e.g., 'picture.jpg').
-
-    Returns:
-        bytes: The binary content of the image file for further processing or storage.
-    """
-
     cwd = os.path.dirname(__file__)
     image_path = os.path.join(cwd, "images", image_name)
     image_path = os.path.abspath(image_path)
@@ -204,19 +130,6 @@ def open_picture(image_name):
 
 
 def find_best_matching_user(input_audio_blob, recognizer):
-    """
-    Identifies the best matching user in the database for a given audio recording.
-
-    Parameters:
-        recognizer (model): The speaker recognition model used for matching.
-        input_audio_blob (bytes): The binary audio data to verify.
-
-    Returns:
-        tuple: A tuple containing:
-            - best_user_id (int): The ID of the user with the highest match.
-            - best_score (float): The similarity score of the best match.
-    """
-
     # Extract embedding for the input audio
     input_embedding = enhance_audio_to_blob(input_audio_blob)
     audio_tensor, sample_rate = torchaudio.load(io.BytesIO(input_embedding))
@@ -233,7 +146,6 @@ def find_best_matching_user(input_audio_blob, recognizer):
     # Query to retrieve all user_id and audio_blob pairs
     cursor.execute("SELECT user_id, voice_embedding FROM voice_print")
     results = cursor.fetchall()
-    # st.text([i for i in results])
     conn.close()
 
     # Loop through each user in the database
@@ -253,16 +165,6 @@ def find_best_matching_user(input_audio_blob, recognizer):
 
 
 def show_result(user_id):
-    """
-    Retrieves the user's details from the database after voice verification.
-
-    Parameters:
-        user_id (int): The primary key of the user in the database.
-
-    Returns:
-        list: A list containing the user's details retrieved from the database.
-    """
-
     connection = create_connection()
     cursor = connection.cursor()
     cursor.execute("""
