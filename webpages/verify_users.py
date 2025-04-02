@@ -32,11 +32,12 @@ if audio_file:
         with st.spinner("Checking Database"):       # Aesthetics
             time.sleep(2)
         if not predict:
-            st.error("Authentication Failed! VOice mismatch detected.")
+            st.error("Authentication Failed! Voice mismatch detected.")
         else:
             with st.spinner("Verifying User"):      # Aesthetics
                 time.sleep(2)
             rows = show_result(bestUser_id)
+            st.success("Authentication Successful!!!")
             col1, col2 = st.columns(2)
             for row in rows:
                 fullname = f"<p>Fullname:<br><b>{row[3]} {row[1]} {row[2]}</b></p>"
@@ -47,8 +48,7 @@ if audio_file:
                 sex = f"<p>Gender:<br><b>{row[7]}</b></p>"
                 occupation = f"<p>Occupation:<br><b>{row[8]}</b></p>"
                 marital_status = f"<p>Marital Status:<br><b>{row[9]}</b></p>"
-                st.header(f"Authentication Successful! Welcome {fullname}.")
-
+                
                 with col1:
                     images = base64.b64encode(row[10]).decode()
                     st.markdown(f'<img style="border: 2px solid powderblue" src="data:image/jpeg;base64,{images}" '
